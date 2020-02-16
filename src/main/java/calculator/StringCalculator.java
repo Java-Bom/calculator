@@ -11,12 +11,13 @@ public class StringCalculator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String inputString = scanner.next();
+        String inputString = scanner.nextLine();
 
         String[] values = inputString.split(" ");
         for (String value : values) {
             verifyValueAndCalculateWith(value);
         }
+        System.out.println(finalResult);
     }
 
     private static void verifyValueAndCalculateWith(String value) {
@@ -61,8 +62,3 @@ public class StringCalculator {
         return operators.contains(value);
     }
 }
-
-// 입력받고 분리 문자열 만들어내는
-// 숫자인지 연산자인지 구분하는 메소드
-// 실제 연산하는 코드
-// 0으로 나눌때 ??
