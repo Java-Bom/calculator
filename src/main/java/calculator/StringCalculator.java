@@ -39,10 +39,18 @@ public class StringCalculator {
             finalResult -= Integer.parseInt(value);
         }
         if (operator.equals("/")) {
-            finalResult /= Integer.parseInt(value);
+            isArithmeticException(Integer.parseInt(value));
         }
         if (operator.equals("*")) {
             finalResult *= Integer.parseInt(value);
+        }
+    }
+
+    private static void isArithmeticException(int value) {
+        try{
+            finalResult /= value;
+        }catch (ArithmeticException e){
+            e.printStackTrace();
         }
     }
 
