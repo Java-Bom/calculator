@@ -11,7 +11,7 @@ class CalculatorTest {
     @DisplayName("문자열 계산 정상동작")
     @Test
     void calc() {
-        String expression = "1 + 3 / 3";
+        String expression = "1 + 3 / 4";
         Calculator calculator = new Calculator();
         assertThat(calculator.calc(expression)).isEqualTo(1);
     }
