@@ -14,10 +14,10 @@ public class Calculator {
 
         for(int i = 1 ; i < splitedFormula.length; i += 2) {
             String operator = splitedFormula[i];
-            double operand = Double.parseDouble(splitedFormula[i+1]);
+            double operand = Double.parseDouble(splitedFormula[i + 1]);
 
-            Operator.Expression expression = Operator.getExpress(operator);
-            result = expression.expression(result, operand);
+//            Operator.Expression expression = Operator.getExpress(operator);
+//            result = expression.expression(result, operand);
         }
 
         return result;
