@@ -14,21 +14,9 @@ public class CalculateService {
         this.calculator = calculator;
     }
 
-    public String calculate(){
-        String formula = receiveFormula();
+    public double calculate(String formula) {
         String[] spitedFormula = split(formula);
-
-        return convertToString(calculator.calculate(spitedFormula));
-    }
-
-    private String convertToString(double result) {
-        return String.format("%s", result);
-    }
-
-    // 입력을 어디서 받을까 ..
-    private String receiveFormula(){
-        Scanner scanner = new Scanner(System.in);
-        return scanner.next();
+        return calculator.calculate(spitedFormula);
     }
 
     private String[] split(String formula){

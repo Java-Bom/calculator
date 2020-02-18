@@ -3,8 +3,8 @@ package view;
 import java.text.DecimalFormat;
 
 public class OutputView {
-    public static void printResult(final String result) {
-        System.out.println("결과: "+ result);
+    public static void printResult(final double result) {
+        System.out.println("결과: " + result);
     }
 
     public static void printInputMessage() {

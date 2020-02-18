@@ -9,6 +9,10 @@ public class Operator {
         this.type = Type.getType(operator);
     }
 
+    public Type.Expression getExpression() {
+        return type.expression;
+    }
+
     public Type getType() {
         return type;
     }

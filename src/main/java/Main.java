@@ -8,10 +8,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         CalculateService calculateService = new CalculateService(new Calculator());
 
         OutputView.printInputMessage();
-        OutputView.printResult(calculateService.calculate());
+        String receivedFormula = scanner.nextLine();
 
+        double result = calculateService.calculate(receivedFormula);
+        OutputView.printResult(result);
     }
 }
