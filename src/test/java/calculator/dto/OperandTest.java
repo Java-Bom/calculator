@@ -3,6 +3,7 @@ package calculator.dto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperandTest {
@@ -12,5 +13,6 @@ class OperandTest {
         String stringOperand = "123";
         Operand operand = new Operand(stringOperand);
 
+        assertThat(operand.getValue()).isEqualTo(123);
     }
 }

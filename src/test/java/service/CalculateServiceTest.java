@@ -19,4 +19,15 @@ class CalculateServiceTest {
         assertThat(calculateService.calculate(formula)).isEqualTo(1D);
     }
 
+    @DisplayName("잘못된 수식을 가져왔을 때 올바른 에러를 던져주는지")
+    @Test
+    void calculate_throw() {
+        String formula = "1 + 2 / 3 *";
+        Calculator calculator = new Calculator();
+        CalculateService calculateService = new CalculateService(calculator);
+
+        assertThrows(IllegalArgumentException.class, () -> calculateService.calculate(formula));
+    }
+
+
 }

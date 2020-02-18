@@ -3,14 +3,11 @@ package calculator.dto;
 import java.util.Arrays;
 
 public class Operator {
+
     private Type type;
 
     public Operator(String operator) {
-        this.type = Type.getType(operator);
-    }
-
-    public Type.Expression getExpression() {
-        return type.expression;
+        this.type = Type.convertToType(operator);
     }
 
     public Type getType() {
@@ -32,7 +29,7 @@ public class Operator {
             this.expression = expression;
         }
 
-        public static Type getType(String operator) {
+        public static Type convertToType(String operator) {
             return Arrays.stream(Type.values())
                     .filter(type -> type.isOperator(operator))
                     .findAny()
@@ -47,8 +44,10 @@ public class Operator {
             return notation.equals(operator);
         }
 
-        public interface Expression {
-            double expression(double a, double b);
-        }
+
+    }
+
+    public interface Expression {
+        double expression(double a, double b);
     }
 }

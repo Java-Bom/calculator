@@ -1,16 +1,16 @@
 package calculator.dto;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class OperatorTest {
 
-    @DisplayName("String 연산자가 계산식을 들고있는 Operator로 변한다.")
+
     @Test
-    void StringToOperator() {
+    void StringToOperator(String input, String actual) {
         String stringOperator = "+";
 
         Operator operator = new Operator(stringOperator);

@@ -4,23 +4,41 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
-    @DisplayName("문자열 계산 정상동작")
+    @DisplayName("수식 배열 계산 테스트")
     @Test
-    void calc() {
-        String expression = "1 + 3 / 4";
+    void cal() {
+        String formula = "1 + 2 * 3 / 3";
         Calculator calculator = new Calculator();
-//        assertThat(calculator.calculate(expression)).isEqualTo(1);
+
+        double result = calculator.calculate(formula.split(" "));
+
+        assertThat(result).isEqualTo(3D);
     }
 
-    @DisplayName("잘못된 수식 입력시 예외")
+    @DisplayName("Operand 자리에 잘못된 값이 들어갔을 뗴")
     @Test
-    void calc_throw_exception() {
-        String expression = "1 + 3 /";
+    void cal_throw() {
+        String formula = "가 + 2 * 3 / 3";
         Calculator calculator = new Calculator();
-//        assertThrows(IllegalArgumentException.class,() -> calculator.calculate(expression));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(formula.split(" ")));
+
+    }
+
+
+    @DisplayName("Operator 자리에 잘못된 값이 들어갔을 뗴")
+    @Test
+    void cal_throw_opt() {
+        String formula = "1 @ 2 * 3 / 3";
+        Calculator calculator = new Calculator();
+
+        assertThrows(IllegalArgumentException.class,
+                () -> calculator.calculate(formula.split(" ")));
+
     }
 }

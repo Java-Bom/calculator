@@ -25,8 +25,8 @@ public class CalculateService {
         return splitedFormula;
     }
 
-    private void validateFormula(String[] splitedFormular) {
-        if(splitedFormular.length % 2 == 0) {
+    private void validateFormula(String[] splitedFormula) {
+        if(splitedFormula.length % 2 == 0) {
             throw new IllegalArgumentException("올바른 수식이 아닙니다.");
         }
     }

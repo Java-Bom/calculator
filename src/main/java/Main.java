@@ -1,6 +1,5 @@
 import calculator.Calculator;
 import service.CalculateService;
-import view.InputView;
 import view.OutputView;
 
 import java.util.Scanner;
