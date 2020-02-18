@@ -13,7 +13,7 @@ public class Calculator {
             Operator operator = new Operator(formula[i]);
             Operand operand = new Operand(formula[i + 1]);
 
-            result = operator.getType().getExpression().expression(result, operand.getValue());
+            result = operator.compute(result, operand.getValue());
         }
 
         return result;

@@ -7,13 +7,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        CalculateService calculateService = new CalculateService(new Calculator());
 
         OutputView.printInputMessage();
+
+        Scanner scanner = new Scanner(System.in);
         String receivedFormula = scanner.nextLine();
 
+        CalculateService calculateService = new CalculateService(new Calculator());
         double result = calculateService.calculate(receivedFormula);
+
         OutputView.printResult(result);
     }
 }

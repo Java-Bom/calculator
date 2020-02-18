@@ -29,7 +29,7 @@ class CalculateServiceTest {
         assertThrows(IllegalArgumentException.class, () -> calculateService.calculate(formula));
     }
 
-    @DisplayName("0으ㅗ 라눈면?")
+    @DisplayName("0으로 나누면?")
     @Test
     void calculate_throw1() {
         String formula = "1 + 2 / 0";
