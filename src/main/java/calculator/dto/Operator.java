@@ -1,13 +1,13 @@
-package calculator;
+package calculator.dto;
 
 import java.util.Arrays;
 
-enum Operator {
+public enum Operator {
 
-    PLUS("+", (a,b) -> a + b),
-    MINUS("-", (a,b) -> a - b),
-    MULTIPLY("*", (a,b) -> a * b),
-    DIVIDE("/", (a,b) -> a / b);
+    PLUS("+", (a, b) -> a + b),
+    MINUS("-", (a, b) -> a - b),
+    MULTIPLY("*", (a, b) -> a * b),
+    DIVIDE("/", (a, b) -> a / b);
 
     private String notation;
     private Expression expression;
@@ -27,5 +27,9 @@ enum Operator {
 
     private boolean isOperator(String operator) {
         return notation.equals(operator);
+    }
+
+    public interface Expression {
+        double expression(double a, double b);
     }
 }

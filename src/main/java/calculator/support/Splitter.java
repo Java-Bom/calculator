@@ -1,6 +1,5 @@
 package calculator.support;
 
-import static sun.tools.jconsole.Messages.BLANK;
 
 public class Splitter {
 

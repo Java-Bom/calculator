@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.dto.Operator;
 import calculator.support.Splitter;
 
 public class Calculator {
@@ -15,7 +16,7 @@ public class Calculator {
             String operator = splitedFormula[i];
             double operand = Double.parseDouble(splitedFormula[i+1]);
 
-            Expression expression = Operator.getExpress(operator);
+            Operator.Expression expression = Operator.getExpress(operator);
             result = expression.expression(result, operand);
         }
 

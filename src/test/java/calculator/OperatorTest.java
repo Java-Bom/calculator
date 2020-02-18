@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.dto.Operator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
