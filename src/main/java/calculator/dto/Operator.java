@@ -13,7 +13,7 @@ public class Operator {
         return type;
     }
 
-    enum Type {
+    public enum Type {
 
         PLUS("+", (a, b) -> a + b),
         MINUS("-", (a, b) -> a - b),

@@ -13,7 +13,7 @@ class CalculatorTest {
     void calc() {
         String expression = "1 + 3 / 4";
         Calculator calculator = new Calculator();
-        assertThat(calculator.calc(expression)).isEqualTo(1);
+        assertThat(calculator.calculate(expression)).isEqualTo(1);
     }
 
     @DisplayName("잘못된 수식 입력시 예외")
@@ -21,6 +21,6 @@ class CalculatorTest {
     void calc_throw_exception() {
         String expression = "1 + 3 /";
         Calculator calculator = new Calculator();
-        assertThrows(IllegalArgumentException.class,() -> calculator.calc(expression));
+        assertThrows(IllegalArgumentException.class,() -> calculator.calculate(expression));
     }
 }

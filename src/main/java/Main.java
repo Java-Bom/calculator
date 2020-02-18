@@ -1,4 +1,5 @@
 import calculator.Calculator;
+import service.CalculateService;
 import view.InputView;
 import view.OutputView;
 
@@ -7,12 +8,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView(new Scanner(System.in));
+        CalculateService calculateService = new CalculateService(new Calculator());
+
         OutputView.printInputMessage();
+        OutputView.printResult(calculateService.calculate());
 
-        String mathExpression = inputView.inputMathExpression();
-
-        Calculator calculator = new Calculator();
-        OutputView.printResult(calculator.calc(mathExpression));
     }
 }
