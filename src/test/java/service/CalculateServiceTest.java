@@ -28,6 +28,18 @@ class CalculateServiceTest {
 
         assertThrows(IllegalArgumentException.class, () -> calculateService.calculate(formula));
     }
+/*
+    @DisplayName("0으ㅗ 라눈면?")
+    @Test
+    void calculate_throw1() {
+        String formula = "1 + 2 / 0";
+        Calculator calculator = new Calculator();
+        CalculateService calculateService = new CalculateService(calculator);
 
+        assertThrows(NumberFormatException.class, () -> {
+                    System.out.println(calculateService.calculate(formula));
+                }
+        );
+    }*/
 
 }
