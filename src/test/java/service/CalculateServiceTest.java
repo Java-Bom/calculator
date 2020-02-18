@@ -28,7 +28,7 @@ class CalculateServiceTest {
 
         assertThrows(IllegalArgumentException.class, () -> calculateService.calculate(formula));
     }
-/*
+
     @DisplayName("0으ㅗ 라눈면?")
     @Test
     void calculate_throw1() {
@@ -36,10 +36,8 @@ class CalculateServiceTest {
         Calculator calculator = new Calculator();
         CalculateService calculateService = new CalculateService(calculator);
 
-        assertThrows(NumberFormatException.class, () -> {
-                    System.out.println(calculateService.calculate(formula));
-                }
-        );
-    }*/
+        assertThrows(NumberFormatException.class,
+                () -> calculateService.calculate(formula));
+    }
 
 }
