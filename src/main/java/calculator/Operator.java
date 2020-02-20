@@ -12,7 +12,7 @@ class Operator {
         if (!isOperator(operator)) {
             throw new RuntimeException("input value is not operator");
         }
-        this.operator = Symbol.valueOf(operator);
+        this.operator = Symbol.of(operator);
     }
 
     public Number calculate(Number left, Number right) {
@@ -39,9 +39,26 @@ class Operator {
     }
 
     enum Symbol {
-        PLUS,
-        MINUS,
-        DIVIDE,
-        MULTIPLY
+        PLUS("+"),
+        MINUS("-"),
+        DIVIDE("/"),
+        MULTIPLY("*");
+
+        private String operator;
+
+        Symbol(String operator) {
+            this.operator = operator;
+        }
+
+        public String getOperator() {
+            return operator;
+        }
+
+        public static Symbol of(String operator) {
+            return Arrays.stream(Symbol.values())
+                    .filter(symbol -> symbol.getOperator().equals(operator))
+                    .findFirst()
+                    .orElseThrow(RuntimeException::new);
+        }
     }
 }

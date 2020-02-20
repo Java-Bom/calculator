@@ -24,9 +24,9 @@ public class StringCalculator {
 
             Number rightNumber = new Number(numberString);
             operator = new Operator(operatorString);
+
             result = operator.calculate(result, rightNumber);
         }
-
         return result.getValue();
     }
 
