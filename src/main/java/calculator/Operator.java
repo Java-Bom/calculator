@@ -6,26 +6,26 @@ import java.util.stream.Collectors;
 
 class Operator {
 
-    private String operator;
+    private Symbol operator;
 
     Operator(String operator) {
         if (!isOperator(operator)) {
             throw new RuntimeException("input value is not operator");
         }
-        this.operator = operator;
+        this.operator = Symbol.valueOf(operator);
     }
 
     public Number calculate(Number left, Number right) {
-        if ("+".equals(operator)) {
+        if (operator == Symbol.PLUS) {
             return new Number(left.getValue() + right.getValue());
         }
-        if ("-".equals(operator)) {
+        if (operator == Symbol.MINUS) {
             return new Number(left.getValue() - right.getValue());
         }
-        if ("/".equals(operator)) {
+        if (operator == Symbol.DIVIDE) {
             return new Number(left.getValue() / right.getValue());
         }
-        if ("*".equals(operator)) {
+        if (operator == Symbol.MULTIPLY) {
             return new Number(left.getValue() * right.getValue());
         }
         throw new RuntimeException("operator is not exist");
@@ -38,4 +38,10 @@ class Operator {
         return operators.contains(value);
     }
 
+    enum Symbol {
+        PLUS,
+        MINUS,
+        DIVIDE,
+        MULTIPLY
+    }
 }
