@@ -1,12 +1,12 @@
-package calculator.operation;
+package calculator.operation.strategy;
 
 import java.util.Arrays;
 
 public enum OperationGroup {
     PLUS("+", Double::sum),
-    MINUS("-", (x, y) -> x - y),
-    MULTIPLE("*", (x, y) -> x * y),
-    DIVIDE("/", (x, y) -> x / y);
+    MINUS("-", (firstOperand, secondOperand) -> firstOperand - secondOperand),
+    MULTIPLE("*", (firstOperand, secondOperand) -> firstOperand * secondOperand),
+    DIVIDE("/", (firstOperand, secondOperand) -> firstOperand / secondOperand);
 
     private static final String NOT_FOUND_TOKEN_EXCEPTION_MESSAGE = "%s : 존재하지 않는 토큰입니다.";
 
