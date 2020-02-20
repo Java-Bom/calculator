@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class NumberBundle {
+    private static final String EMPTY_NUMBER_EXCEPTION_MESSAGE = "연산 가능한 숫자가 존재하지 않습니다.";
     private final Queue<Number> numberBundle;
 
     public NumberBundle(List<String> splitEquation) {
@@ -29,7 +30,7 @@ public class NumberBundle {
 
     private void checkEmpty() {
         if (numberBundle.isEmpty()) {
-            throw new NoSuchElementException("연산 가능한 숫자가 존재하지 않습니다.");
+            throw new NoSuchElementException(EMPTY_NUMBER_EXCEPTION_MESSAGE);
         }
     }
 

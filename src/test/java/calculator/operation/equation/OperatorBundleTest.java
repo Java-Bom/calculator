@@ -28,7 +28,7 @@ class OperatorBundleTest {
     @Test
     void isNotEmpty() {
         //given
-        List<String> splitEquation = Arrays.asList("1", "+", "2");
+        List<String> splitEquation = Arrays.asList("+");
 
         //when
         OperatorBundle operatorBundle = new OperatorBundle(splitEquation);
