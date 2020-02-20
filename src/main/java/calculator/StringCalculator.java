@@ -1,63 +1,33 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-
 public class StringCalculator {
-    public static Integer finalResult = null;
-    public static String operator = "";
+
+    private static final int FIRST_INDEX = 0;
 
     public static void main(String[] args) {
 
         String[] splitString = InputStringHelper.splitStringArray();
 
-        for (String value : splitString) {
-            verifyValueAndCalculateWith(value);
-        }
-        System.out.println(finalResult);
+        int result = StringCalculator.calculateWith(splitString);
+
+        System.out.println(result);
+
     }
 
-    private static void verifyValueAndCalculateWith(String value) {
-        if (isOperator(value)) {
-            operator = value;
-            return;
+    public static int calculateWith(String[] splitString) {
+        Operator operator;
+        Number result = new Number(splitString[FIRST_INDEX]);
+
+        for (int index = 1; index < splitString.length; index += 2) {
+            String operatorString = splitString[index];
+            String numberString = splitString[index + 1];
+
+            Number rightNumber = new Number(numberString);
+            operator = new Operator(operatorString);
+            result = operator.calculate(result, rightNumber);
         }
-        calculateWith(value);
+
+        return result.getValue();
     }
 
-    public static void calculateWith(String value) {
-        if (finalResult == null) {
-            finalResult = Integer.parseInt(value);
-            return;
-        }
-        if (operator.equals("+")) {
-            finalResult += Integer.parseInt(value);
-        }
-        if (operator.equals("-")) {
-            finalResult -= Integer.parseInt(value);
-        }
-        if (operator.equals("/")) {
-            isArithmeticException(Integer.parseInt(value));
-        }
-        if (operator.equals("*")) {
-            finalResult *= Integer.parseInt(value);
-        }
-    }
-
-    private static void isArithmeticException(int value) {
-        try {
-            finalResult /= value;
-        } catch (ArithmeticException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static boolean isOperator(String value) {
-        String[] operatorSet = {"+", "-", "*", "/"};
-        List<String> operators = Arrays.stream(operatorSet)
-                .collect(Collectors.toList());
-        return operators.contains(value);
-    }
 }
