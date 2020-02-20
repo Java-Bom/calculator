@@ -16,6 +16,10 @@ public class InputExpressionDTO {
         }
     }
 
+    public String getExpression() {
+        return expression;
+    }
+
     private boolean isEmpty(String expression) {
         return expression == null || expression.trim().equals("");
     }

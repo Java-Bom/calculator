@@ -5,7 +5,6 @@ import java.util.List;
 
 public final class EquationSplitter {
     private static final String DELIMITER = " ";
-    private static final String BLANK = "";
     private static final String NULL_OR_EMPTY_EXCEPTION_MESSAGE = "%s : 입력식이 비어있습니다.";
 
     public static List<String> split(String equation) {
