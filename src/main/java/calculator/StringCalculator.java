@@ -10,11 +10,10 @@ public class StringCalculator {
     public static String operator = "";
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String inputString = scanner.nextLine();
 
-        String[] values = inputString.split(" ");
-        for (String value : values) {
+        String[] splitString = InputStringHelper.splitStringArray();
+
+        for (String value : splitString) {
             verifyValueAndCalculateWith(value);
         }
         System.out.println(finalResult);
@@ -48,9 +47,9 @@ public class StringCalculator {
     }
 
     private static void isArithmeticException(int value) {
-        try{
+        try {
             finalResult /= value;
-        }catch (ArithmeticException e){
+        } catch (ArithmeticException e) {
             e.printStackTrace();
         }
     }
