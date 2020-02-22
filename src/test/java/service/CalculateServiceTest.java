@@ -39,7 +39,7 @@ class CalculateServiceTest {
         CalculateService calculateService = new CalculateService(calculator);
 
         assertThatThrownBy(() -> calculateService.calculate(formula))
-                .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
