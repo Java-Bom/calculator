@@ -3,7 +3,6 @@ package calculator;
 public class Calculator {
     private double result;
     private int nextvalue = 1;
-    Exception invalidValue = new Exception("사칙연산자만 입력하세요");
 
     //부호를 검증하고, 그에 맞는 함수를 호출하는 함수.
     //변수명 만들기.(축약하지 않기)
@@ -15,8 +14,13 @@ public class Calculator {
         result = numberArr[0];
         result = callVal(operatorArr,numberArr);
     }
-    
-    private double callVal(String[] operatorArr, int[] numberArr){
+
+    public static double calculate(String[] operatorArr, int[] numberArr) {
+        return callVal(operatorArr,numberArr);
+    }
+
+    private static double callVal(String[] operatorArr, int[] numberArr){
+        int result = numberArr[0];
         for(int i = 0 ; i < operatorArr.length ; i++){
             result = CalculateValue(operatorArr[i], numberArr);
         }
@@ -24,21 +28,24 @@ public class Calculator {
 
     }
 
-    private double CalculateValue(String operator, int[] numberArr) {
-        if("+".equals(operator)){
-            return plus(result,numberArr[nextvalue++]);
-        }
-        if("-".equals(operator)){
-            return minus(result,numberArr[nextvalue++]);
-        }
-        if("*".equals(operator)){
-            return multi(result,numberArr[nextvalue++]);
-        }
-        if("/".equals(operator)){
-            return divide(result,numberArr[nextvalue++]);
-        }
-        System.out.println(this.invalidValue.getMessage());
-        return 0; //수정 필요
+    private double CalculateValue(int a, int b, String operator) {
+        EnumCal findOperator = EnumCal.findByOperator(operator);
+        return findOperator.calculate(a,b);
+
+//        if("+".equals(operator)){
+//            return plus(result,numberArr[nextvalue++]);
+//        }
+//        if("-".equals(operator)){
+//            return minus(result,numberArr[nextvalue++]);
+//        }
+//        if("*".equals(operator)){
+//            return multi(result,numberArr[nextvalue++]);
+//        }
+//        if("/".equals(operator)){
+//            return divide(result,numberArr[nextvalue++]);
+//        }
+//        System.out.println(this.invalidValue.getMessage());
+//        return 0; //수정 필요
     }
 
     public double getResult(){

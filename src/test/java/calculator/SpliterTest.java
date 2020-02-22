@@ -22,8 +22,8 @@ class SpliterTest {
         String isNumber = "%";
         boolean expectBool = false;
         assertThat(Spliter.isRightNumber(isNumber)).isEqualTo(expectBool);
-//        String errorMessage = "Input valid value";
-//        assertThat(Spliter.checkValidity(expectBool,errorMessage)).isEqualTo(errorMessage);
+//      String errorMessage = "Input valid value";
+//      assertThat(Spliter.checkValidity(expectBool,errorMessage)).isEqualTo(errorMessage);
     }
 
     @DisplayName("연산자 배열 생성 정상 동작")
