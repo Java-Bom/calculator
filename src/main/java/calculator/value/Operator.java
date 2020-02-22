@@ -2,6 +2,7 @@ package calculator.value;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Operator {
@@ -10,7 +11,7 @@ public class Operator {
 
     public Operator(String operator) {
         if (!isOperator(operator)) {
-            throw new RuntimeException("input value is not operator");
+            throw new IllegalArgumentException("input value is not operator");
         }
         this.operator = Symbol.of(operator);
     }
@@ -28,7 +29,7 @@ public class Operator {
         if (operator == Symbol.MULTIPLY) {
             return new Number(left.getValue() * right.getValue());
         }
-        throw new RuntimeException("operator is not exist");
+        throw new NoSuchElementException("operator is not exist");
     }
 
     private boolean isOperator(String value) {
@@ -58,7 +59,7 @@ public class Operator {
             return Arrays.stream(Symbol.values())
                     .filter(symbol -> symbol.getOperator().equals(operator))
                     .findFirst()
-                    .orElseThrow(RuntimeException::new);
+                    .orElseThrow(NoSuchElementException::new);
         }
     }
 }

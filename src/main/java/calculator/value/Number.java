@@ -8,7 +8,7 @@ public class Number {
         try {
             this.value = Integer.parseInt(number);
         } catch (Exception e) {
-            throw new RuntimeException("input string is not number");
+            throw new IllegalArgumentException("input string is not number");
         }
     }
 
