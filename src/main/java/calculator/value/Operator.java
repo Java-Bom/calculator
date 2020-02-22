@@ -1,14 +1,14 @@
-package calculator;
+package calculator.value;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Operator {
+public class Operator {
 
     private Symbol operator;
 
-    Operator(String operator) {
+    public Operator(String operator) {
         if (!isOperator(operator)) {
             throw new RuntimeException("input value is not operator");
         }

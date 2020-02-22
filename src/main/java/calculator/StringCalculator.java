@@ -1,18 +1,11 @@
 package calculator;
 
+import calculator.value.Number;
+import calculator.value.Operator;
+
 public class StringCalculator {
 
     private static final int FIRST_INDEX = 0;
-
-    public static void main(String[] args) {
-
-        String[] splitString = InputStringHelper.splitStringArray();
-
-        int result = StringCalculator.calculateWith(splitString);
-
-        System.out.println(result);
-
-    }
 
     public static int calculateWith(String[] splitString) {
         Operator operator;
@@ -29,5 +22,4 @@ public class StringCalculator {
         }
         return result.getValue();
     }
-
 }

@@ -1,10 +1,10 @@
-package calculator;
+package calculator.value;
 
 public class Number {
 
     private int value;
 
-    Number(String number) {
+    public Number(String number) {
         try {
             this.value = Integer.parseInt(number);
         } catch (Exception e) {
@@ -12,7 +12,7 @@ public class Number {
         }
     }
 
-    Number(int number) {
+    public Number(int number) {
         this.value = number;
     }
 
@@ -20,5 +20,6 @@ public class Number {
         return value;
     }
 
-    // 자바는 연산자 오버로딩은 지원하지 않나요 ?????
+    // 원래 터지는 익셉션이여도 따로 내가 터트리는게 더 나은것같다는 결론.
+    // IllegalArgumentException 사용이 더 낫다
 }
