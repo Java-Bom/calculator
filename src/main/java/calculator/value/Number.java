@@ -2,7 +2,7 @@ package calculator.value;
 
 public class Number {
 
-    private int value;
+    private final int value;
 
     public Number(String number) {
         try {
@@ -20,6 +20,20 @@ public class Number {
         return value;
     }
 
-    // 원래 터지는 익셉션이여도 따로 내가 터트리는게 더 나은것같다는 결론.
-    // IllegalArgumentException 사용이 더 낫다
+    public Number plus(Number inputValue) {
+        return new Number(this.value + inputValue.getValue());
+    }
+
+    public Number minus(Number inputValue) {
+        return new Number(this.value - inputValue.getValue());
+    }
+
+    public Number multiply(Number inputValue) {
+        return new Number(this.value * inputValue.getValue());
+    }
+
+    public Number divide(Number inputValue) {
+        return new Number(this.value / inputValue.getValue());
+    }
 }
+// 원래 터지는 익셉션이여도 따로 내가 터트리는게 더 나은것같다는 결론.
