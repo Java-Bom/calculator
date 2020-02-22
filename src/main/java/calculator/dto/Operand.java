@@ -12,6 +12,10 @@ public class Operand {
         }
     }
 
+    public Operand(double value) {
+        this.value = value;
+    }
+
     public double getValue() {
         return value;
     }

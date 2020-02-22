@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -16,8 +16,8 @@ class OperatorTest {
     @CsvSource({"+", "-", "*", "/"})
     @ParameterizedTest
     void StringToOperator(String input) {
-
         Operator operator = new Operator(input);
+
         assertThat(operator.getType()).isIn(Operator.Type.values());
 
     }
@@ -26,6 +26,7 @@ class OperatorTest {
     @CsvSource({"1", "asdf", "="})
     @ParameterizedTest
     void StringToOpeartorFail(String input) {
-        assertThrows(IllegalArgumentException.class, () -> new Operator(input));
+        assertThatThrownBy(() -> new Operator(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

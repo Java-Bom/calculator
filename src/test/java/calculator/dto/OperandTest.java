@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperandTest {
@@ -13,7 +14,7 @@ class OperandTest {
     @CsvSource({"+", "/", "123/", "a", "1b23", "000/"})
     @ParameterizedTest
     void StringToOperand(String input) {
-        assertThrows(IllegalArgumentException.class,
-                () -> new Operand(input));
+        assertThatThrownBy(() -> new Operand(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

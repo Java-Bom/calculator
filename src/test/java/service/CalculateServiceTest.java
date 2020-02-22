@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculateServiceTest {
@@ -26,7 +27,8 @@ class CalculateServiceTest {
         Calculator calculator = new Calculator();
         CalculateService calculateService = new CalculateService(calculator);
 
-        assertThrows(IllegalArgumentException.class, () -> calculateService.calculate(formula));
+        assertThatThrownBy(() -> calculateService.calculate(formula))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("0으로 나누면?")
@@ -36,8 +38,8 @@ class CalculateServiceTest {
         Calculator calculator = new Calculator();
         CalculateService calculateService = new CalculateService(calculator);
 
-        assertThrows(NumberFormatException.class,
-                () -> calculateService.calculate(formula));
+        assertThatThrownBy(() -> calculateService.calculate(formula))
+                .isInstanceOf(NumberFormatException.class);
     }
 
 }

@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -25,8 +26,8 @@ class CalculatorTest {
         String formula = "가 + 2 * 3 / 3";
         Calculator calculator = new Calculator();
 
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculate(formula.split(" ")));
+        assertThatThrownBy(() -> calculator.calculate(formula.split(" ")))
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 
@@ -37,8 +38,8 @@ class CalculatorTest {
         String formula = "1 @ 2 * 3 / 3";
         Calculator calculator = new Calculator();
 
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculate(formula.split(" ")));
+        assertThatThrownBy(() -> calculator.calculate(formula.split(" ")))
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 }

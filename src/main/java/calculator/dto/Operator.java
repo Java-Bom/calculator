@@ -14,12 +14,11 @@ public class Operator {
         return type;
     }
 
-    public double compute(double result, double operand) {
-        return type.getExpression().compute(result, operand);
+    public Operand compute(Operand leftOperand, Operand rightOperand) {
+        return type.computeExpression(leftOperand, rightOperand);
     }
 
     enum Type {
-
         PLUS("+", (a, b) -> a + b),
         MINUS("-", (a, b) -> a - b),
         MULTIPLY("*", (a, b) -> a * b),
@@ -38,10 +37,6 @@ public class Operator {
             this.expression = expression;
         }
 
-        Expression getExpression() {
-            return this.expression;
-        }
-
         static Type of(String operator) {
             return Arrays.stream(Type.values())
                     .filter(type -> type.isOperator(operator))
@@ -53,9 +48,13 @@ public class Operator {
             return notation.equals(operator);
         }
 
+        public Operand computeExpression(Operand result, Operand operand) {
+            return new Operand(expression.compute(result.getValue(), operand.getValue()));
+        }
     }
 
     private interface Expression {
         double compute(double leftOperand, double rightOperand);
     }
+
 }
