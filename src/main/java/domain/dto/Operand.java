@@ -1,4 +1,4 @@
-package calculator.dto;
+package domain.dto;
 
 public class Operand {
 

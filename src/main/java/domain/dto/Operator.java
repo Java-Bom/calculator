@@ -1,4 +1,4 @@
-package calculator.dto;
+package domain.dto;
 
 import java.util.Arrays;
 

@@ -1,7 +1,7 @@
-package calculator;
+package domain;
 
-import calculator.dto.Operand;
-import calculator.dto.Operator;
+import domain.dto.Operand;
+import domain.dto.Operator;
 
 public class Calculator {
     public double calculate(String[] formula) {

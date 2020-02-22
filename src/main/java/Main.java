@@ -1,4 +1,4 @@
-import calculator.Calculator;
+import domain.Calculator;
 import service.CalculateService;
 import view.OutputView;
 
