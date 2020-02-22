@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Operator {
 
-    private Type type;
+    private final Type type;
 
     public Operator(String operator) {
         this.type = Type.of(operator);

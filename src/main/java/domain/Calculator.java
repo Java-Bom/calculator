@@ -4,7 +4,6 @@ import calculator.dto.Operand;
 import calculator.dto.Operator;
 
 public class Calculator {
-
     public double calculate(String[] formula) {
         Operand result = new Operand(formula[0]);
 
@@ -17,8 +16,5 @@ public class Calculator {
 
         return result.getValue();
     }
-
-
-
 }
 
