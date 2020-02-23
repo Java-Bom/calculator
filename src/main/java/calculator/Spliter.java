@@ -4,6 +4,14 @@ package calculator;
 public class Spliter {
     private static final String DELIMITER = " ";
 
+    public static void isBlank(String value) {
+        if (value != null) {
+            return;
+        }
+        System.out.println("Error : Input right value");
+        throw new IllegalArgumentException();
+    }
+
     public static int[] splitNumbers(String value) {
         String[] splitedValue = value.split(DELIMITER);
         int[] numberArr = new int[getAnNumberIndex1(splitedValue)];
