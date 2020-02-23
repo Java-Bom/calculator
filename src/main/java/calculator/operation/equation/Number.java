@@ -21,10 +21,6 @@ public final class Number {
         return new Number(maybeNumber);
     }
 
-    public static Number valueOf(double maybeNumber) {
-        return new Number(maybeNumber);
-    }
-
     public static boolean isNumber(String maybeNumber) {
         return NUMBER_PATTERN.matcher(maybeNumber)
                 .find();

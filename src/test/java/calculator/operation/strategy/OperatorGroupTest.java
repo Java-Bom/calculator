@@ -22,7 +22,7 @@ class OperatorGroupTest {
     @DisplayName("입력전략에 따른 계산")
     @ParameterizedTest
     @CsvSource(value = {"3,3,PLUS,6", "3,3,MINUS,0", "3,3,MULTIPLE,9", "3,3,DIVIDE,1"})
-    void operate(double operand1, double operand2, OperatorGroup operatorGroup, double result) {
+    void operate(String operand1, String operand2, OperatorGroup operatorGroup, String result) {
         Number number1 = Number.valueOf(operand1);
         Number number2 = Number.valueOf(operand2);
 
