@@ -1,6 +1,6 @@
 package calculator.operation.equation;
 
-import calculator.operation.strategy.OperationGroup;
+import calculator.operation.strategy.OperatorGroup;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,11 +24,21 @@ public class OperatorBundle {
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    public OperationGroup getNextStrategy() {
+    public double operate(NumberBundle numbers) {
+        Number result = numbers.getNextNumber();
+
+        while (isNotEmpty()) {
+            OperatorGroup operator = getNextOperator();
+            result = operator.operate(result, numbers.getNextNumber());
+        }
+
+        return result.getValue();
+    }
+
+    public OperatorGroup getNextOperator() {
         checkEmpty();
-        String token = Objects.requireNonNull(operatorBundle.poll())
-                .getToken();
-        return OperationGroup.findByToken(token);
+        Operator operator = operatorBundle.poll();
+        return OperatorGroup.findByToken(operator);
     }
 
     private void checkEmpty() {
@@ -43,6 +53,10 @@ public class OperatorBundle {
 
     private boolean isEmpty() {
         return operatorBundle.isEmpty();
+    }
+
+    public int size() {
+        return this.operatorBundle.size();
     }
 
     @Override

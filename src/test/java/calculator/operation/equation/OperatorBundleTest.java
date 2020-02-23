@@ -1,6 +1,6 @@
 package calculator.operation.equation;
 
-import calculator.operation.strategy.OperationGroup;
+import calculator.operation.strategy.OperatorGroup;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +35,7 @@ class OperatorBundleTest {
 
         //then
         assertThat(operatorBundle.isNotEmpty()).isTrue();
-        assertThat(operatorBundle.getNextStrategy()).isEqualTo(OperationGroup.PLUS);
+        assertThat(operatorBundle.getNextOperator()).isEqualTo(OperatorGroup.PLUS);
         assertThat(operatorBundle.isNotEmpty()).isFalse();
     }
 }

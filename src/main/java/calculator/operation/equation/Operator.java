@@ -4,9 +4,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 public final class Operator {
-    private static final String OPERATOR_REGEX = "[+|\\-|*|/]";
-    private static final Pattern OPERATOR_PATTERN = Pattern.compile(OPERATOR_REGEX);
-    private static final String INCORRECT_OPERATOR_EXCEPTION_MESSAGE = "%s : 올바르지 않은 연산자 입니다.";
+    private static final Pattern OPERATOR_PATTERN = Pattern.compile("[+|\\-|*|/]");
 
     private final String token;
 
@@ -26,7 +24,7 @@ public final class Operator {
 
     private void validateOperator(String maybeOperator) {
         if (isNotOperator(maybeOperator)) {
-            throw new IllegalArgumentException(String.format(INCORRECT_OPERATOR_EXCEPTION_MESSAGE, maybeOperator));
+            throw new IllegalArgumentException(String.format("%s : 올바르지 않은 연산자 입니다.", maybeOperator));
         }
     }
 

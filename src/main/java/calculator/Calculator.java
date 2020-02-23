@@ -6,13 +6,10 @@ import calculator.view.InputExpressionDTO;
 import calculator.view.InputView;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Calculator {
-    private final InputView inputView;
-
-    public Calculator(InputView inputView) {
-        this.inputView = inputView;
-    }
+    private static final InputView inputView = new InputView(new Scanner(System.in));
 
     public void run() {
         InputExpressionDTO inputExpressionDTO = inputView.inputEquation();

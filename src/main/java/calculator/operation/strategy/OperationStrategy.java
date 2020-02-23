@@ -1,5 +1,7 @@
 package calculator.operation.strategy;
 
+import calculator.operation.equation.Number;
+
 public interface OperationStrategy {
-    double operate(double firstOperand, double secondOperand);
+    Number operate(Number firstOperand, Number secondOperand);
 }

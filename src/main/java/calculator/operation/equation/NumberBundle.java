@@ -22,16 +22,19 @@ public class NumberBundle {
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    public double getNextNumber() {
+    public Number getNextNumber() {
         checkEmpty();
-        return Objects.requireNonNull(numberBundle.poll())
-                .getValue();
+        return numberBundle.poll();
     }
 
     private void checkEmpty() {
         if (numberBundle.isEmpty()) {
             throw new NoSuchElementException(EMPTY_NUMBER_EXCEPTION_MESSAGE);
         }
+    }
+
+    public int size() {
+        return this.numberBundle.size();
     }
 
     @Override

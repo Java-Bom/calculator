@@ -9,11 +9,19 @@ public final class Number {
     private static final Pattern NUMBER_PATTERN = Pattern.compile(NUMBER_FORMAT);
     private final double value;
 
+    private Number(double value) {
+        this.value = value;
+    }
+
     private Number(String maybeDouble) {
         this.value = parseDouble(maybeDouble);
     }
 
     public static Number valueOf(String maybeNumber) {
+        return new Number(maybeNumber);
+    }
+
+    public static Number valueOf(double maybeNumber) {
         return new Number(maybeNumber);
     }
 
@@ -28,6 +36,22 @@ public final class Number {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(String.format(DOUBLE_PARSE_FAIL_EXCEPTION, maybeDouble));
         }
+    }
+
+    public Number add(Number number) {
+        return new Number(Double.sum(value, number.value));
+    }
+
+    public Number minus(Number number) {
+        return new Number(value - number.value);
+    }
+
+    public Number multiple(Number number) {
+        return new Number(value * number.value);
+    }
+
+    public Number divide(Number number) {
+        return new Number(value / number.value);
     }
 
     public double getValue() {
