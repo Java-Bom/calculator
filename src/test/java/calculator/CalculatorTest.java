@@ -16,12 +16,12 @@ class CalculatorTest {
 //        2 + 3 * 4 / 2 - 2
         String[] operatorArr = {"+","*","/","-"};
         int[] numberArr = {2,3,4,2,2};
-        Calculator calculator = new Calculator(operatorArr,numberArr);
-        assertThat(calculator.getResult()).isEqualTo(8.0);
+//        Calculator calculator = new Calculator(operatorArr,numberArr);
+//        assertThat(calculator).isEqualTo(8.0);
     }
 
-    @ParameterizedTest
-    @CsvSource("1,2,-,-1")
-
+//    @ParameterizedTest
+//    @CsvSource("1,2,-,-1")
+//
 
 }

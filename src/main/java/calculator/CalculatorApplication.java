@@ -1,4 +1,5 @@
 package calculator;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CalculatorApplication {
@@ -7,14 +8,15 @@ public class CalculatorApplication {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
 
-        Spliter.isBlank(value);
+        Spliter spliter = new Spliter();
+        Validator.isBlank(value);
 
-        int[] numberArr = Spliter.splitNumbers(value);
-        String[] operatorArr = Spliter.splitOperators(value);
+        ArrayList<String> operatorList = spliter.splitOperators(value);
+        ArrayList<Integer> numberList = spliter.splitNumbers(value);
 
         Calculator calculator = new Calculator();
+        double result = calculator.callValue(operatorList,numberList);
 
+        System.out.println("result : "+result);
     }
-
-
 }

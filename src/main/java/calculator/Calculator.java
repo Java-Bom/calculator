@@ -1,13 +1,14 @@
 package calculator;
 
-//계산하는 역할만 하도록!!
+import java.util.ArrayList;
+
 public class Calculator {
     private static int nextValueIndex = 1;
 
-    private double callValue(String[] operatorArr, int[] numberArr){
-        double result = numberArr[0];
-        for(int i = 0 ; i < operatorArr.length ; i++){
-            result = calculateValue(result, numberArr[nextValueIndex++],operatorArr[i]);
+    public double callValue(ArrayList<String> operatorList, ArrayList<Integer> numberList){
+        double result = numberList.get(0);
+        for(int i = 0 ; i < operatorList.size() ; i++){
+            result = calculateValue(result, numberList.get(nextValueIndex++),operatorList.get(i));
         }
         return result;
     }
