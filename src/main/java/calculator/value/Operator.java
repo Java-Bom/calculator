@@ -1,7 +1,6 @@
 package calculator.value;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public class Operator {
 
@@ -12,31 +11,21 @@ public class Operator {
     }
 
     public Number calculate(Number left, Number right) {
-        if (operator == Symbol.PLUS) {
-            return left.plus(right);
-        }
-        if (operator == Symbol.MINUS) {
-            return left.minus(right);
-        }
-        if (operator == Symbol.DIVIDE) {
-            return left.divide(right);
-        }
-        if (operator == Symbol.MULTIPLY) {
-            return left.multiply(right);
-        }
-        throw new NoSuchElementException("operator is not exist");
+        return operator.calculateStrategy.calculate(left, right);
     }
 
     enum Symbol {
-        PLUS("+"),
-        MINUS("-"),
-        DIVIDE("/"),
-        MULTIPLY("*");
+        PLUS("+", Number::plus),
+        MINUS("-", Number::minus),
+        DIVIDE("/", Number::divide),
+        MULTIPLY("*", Number::multiply);
 
-        private String operator;
+        private final String operator;
+        private final CalculateStrategy calculateStrategy;
 
-        Symbol(String operator) {
+        Symbol(String operator, CalculateStrategy calculateStrategy) {
             this.operator = operator;
+            this.calculateStrategy = calculateStrategy;
         }
 
         public String getOperator() {
@@ -49,5 +38,9 @@ public class Operator {
                     .findFirst()
                     .orElseThrow(IllegalArgumentException::new);
         }
+    }
+
+    interface CalculateStrategy {
+        Number calculate(Number left, Number right);
     }
 }
