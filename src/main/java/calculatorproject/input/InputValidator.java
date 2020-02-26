@@ -1,40 +1,38 @@
-package calculator;
+package calculatorproject.input;
+
+import calculatorproject.exception.ContinuousOperatorException;
+import calculatorproject.exception.NumberAndOperatorCombinationException;
+import calculatorproject.exception.OperatorLocationException;
+import calculatorproject.exception.UnknownInputException;
 
 import java.util.Arrays;
 
 public class InputValidator {
 
+
+    public boolean validateInput(String input) {
+        if (isUnknownInputStringError(input)) {
+            return true;
+        }
+        if (isContinuousOperatorError(input)) {
+            return true;
+        }
+
+        if (isNumberAndOperatorCombinationError(input)) {
+            return true;
+        }
+        if (isOperatorLocationError(input)) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean isUnknownInputStringError(String input) {
         String invalidString = input.replaceAll("[[+]-[*]/[0-9]]", "").trim();
         if (invalidString.length() > 0) {
-            unknownInputException();
-        }
-        return false;
-    }
-    public boolean validateInput(InputValidator inputValidator, String input) {
-        if (inputValidator.isUnknownInputStringError(input)) {
-            return true;
-        }
-
-        if (inputValidator.isContinuousOperatorError(input)) {
-            return true;
-        }
-
-        if (inputValidator.isNumberAndOperatorCombinationError(input)) {
-            return true;
-        }
-        if (inputValidator.isOperatorLocationError(input)) {
-            return true;
-        }
-        return false;
-    }
-
-    public void unknownInputException() {
-        try {
             throw new UnknownInputException("입력 값을 처리할 수 없습니다. 숫자와 연산자(+, -, *, /)만 입력해주세요.");
-        } catch (UnknownInputException e) {
-            e.printStackTrace();
         }
+        return false;
     }
 
     public boolean isContinuousOperatorError(String input) {
@@ -44,17 +42,9 @@ public class InputValidator {
                 || trimString.contains("*+") || trimString.contains("*-") || trimString.contains("**") || trimString.contains("*/")
                 || trimString.contains("/+") || trimString.contains("/-") || trimString.contains("/*") || trimString.contains("//")
         ) {
-            continuousOperatorException();
+            throw new ContinuousOperatorException("연산자를 연속하여 사용할 수 없습니다.");
         }
         return false;
-    }
-
-    public void continuousOperatorException() {
-        try {
-            throw new ContinuousOperatorException("연산자를 연속하여 사용할 수 없습니다.");
-        } catch (ContinuousOperatorException e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean isNumberAndOperatorCombinationError(String input) {
@@ -64,18 +54,10 @@ public class InputValidator {
             String number = inputValue.replaceAll("[[+]-[*]/]", "").trim();
             String operator = inputValue.replaceAll("[0-9]", "").trim();
             if (number.length() > 0 && operator.length() > 0) {
-                numberAndOperatorCombinationException();
+                throw new NumberAndOperatorCombinationException("입력 값에 숫자 또는 연산자가 아닌 문자열이 포함되어 있습니다.");
             }
         }
         return false;
-    }
-
-    public void numberAndOperatorCombinationException() {
-        try{
-            throw new NumberAndOperatorCombinationException("입력 값에 숫자 또는 연산자가 아닌 문자열이 포함되어 있습니다.");
-        }catch(NumberAndOperatorCombinationException e){
-            e.printStackTrace();
-        }
     }
 
     public boolean isOperatorLocationError(String input) {
@@ -85,16 +67,9 @@ public class InputValidator {
 
         if ((Arrays.asList('+', '-', '/', '*').contains(trimString.toCharArray()[START_POINT]))
                 || (Arrays.asList('+', '-', '/', '*').contains(trimString.toCharArray()[END_POINT]))) {
-            operatorLocationException();
+            throw new OperatorLocationException("연산자의 앞, 뒤 문자열에는 숫자가 와야합니다.");
         }
         return false;
     }
 
-    public void operatorLocationException() {
-        try {
-            throw new OperatorLocationException("연산자의 앞, 뒤 문자열에는 숫자가 와야합니다.");
-        } catch (OperatorLocationException e) {
-            e.printStackTrace();
-        }
-    }
 }
