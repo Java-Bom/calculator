@@ -36,4 +36,3 @@ public class Number {
         return new Number(this.value / inputValue.getValue());
     }
 }
-// 원래 터지는 익셉션이여도 따로 내가 터트리는게 더 나은것같다는 결론.
