@@ -35,7 +35,6 @@ public enum OperatorGroup {
 
     public double calculate(double a, double b){
         return this.operateStrategy.operate(a,b);
-        //operate에 대한 정의는  a+b라고 되어있는 것!
     }
 
 }

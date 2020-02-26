@@ -8,22 +8,21 @@ public class Spliter {
 
     public ArrayList splitNumbers(String value) {
         String[] splitedValue = value.split(DELIMITER);
-        ArrayList numberArr = new ArrayList();
+        ArrayList numberList = new ArrayList();
 
         for (int i = 0; i < splitedValue.length; i+=2) {
-             numberArr.add(Parser.stringToInteger(splitedValue[i]));
+             numberList.add(Parser.stringToInteger(splitedValue[i]));
         }
-        return numberArr;
+        return numberList;
     }
 
     public ArrayList splitOperators(String value) {
         String[] splitedValue = value.split(DELIMITER);
-        ArrayList operatorArr = new ArrayList();
+        ArrayList operatorList = new ArrayList();
 
         for (int i = 1; i < splitedValue.length; i+=2) {
-            Validator.isRightOperator(splitedValue[i]);
-            operatorArr.add(splitedValue[i]);
+            operatorList.add(splitedValue[i]);
         }
-        return operatorArr;
+        return operatorList;
     }
 }
