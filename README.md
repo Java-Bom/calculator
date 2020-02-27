@@ -15,3 +15,12 @@ public void foo(){
 - `else`, `switch ~ case` 예약어를 사용하지 않는다.
 - 메서드의 길이는 15라인을 넘어가지 않는다.
 - setter를 사용하지 않는다.
+
+
+class Calculator
+Enum notation
+
+for ( 배열 ){
+    if 짝수인덱스 
+                
+}
