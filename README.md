@@ -2,13 +2,13 @@
 
 ## 프로그래밍 요구사항
 
-- indent는 2를 넘지 않는다. 다음과 같이 작성하는 경우 indent는 3이다.  
+- 한번의 들여쓰기(indent) 만을 허용한다. 다음 코드는 2번의 들여쓰기가 적용된 경우이다.  
 ```java
 public void foo(){
     for (Foo foo : List<Foo> foos) {
-            if (foo == null) {
-                throw new IllegalArgumentException();
-            }
+        if (foo == null) {
+            throw new IllegalArgumentException();
+        }
     }
 }    
 ```
