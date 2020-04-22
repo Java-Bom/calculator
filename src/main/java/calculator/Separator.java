@@ -1,44 +1,37 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Separator {
-    private String text;
-    private double[] operand;
-    private String[] operation;
+    private Splitter splitter;
+    private List<Double> operand;
+    private List<String> operation;
 
     public Separator(String text) {
-        this.text = text;
+        init(text);
+        separateOperandAndOperation(splitter.split());
     }
 
-    public void separate() {
-        Split split = new Split(text);
-        String[] texts = split.split();
-        init(texts);
-        separateNumberAndOperation(texts);
-    }
-
-    public double[] getArrayOperand() {
+    public List<Double> getOperand() {
         return operand;
     }
 
-    public String[] getArrayOperation() {
+    public List<String> getOperation() {
         return operation;
     }
 
-    private void init(String[] texts) {
-        int length = texts.length;
-        int operationSize = length / 2;
-        int operandSize = operationSize + 1;
-
-        operand = new double[operandSize];
-        operation = new String[operationSize];
+    private void init(String text) {
+        splitter = new Splitter(text);
+        operand = new ArrayList<>();
+        operation = new ArrayList<>();
     }
 
-    private void separateNumberAndOperation(String[] texts) {
-        int idx = 0;
+    private void separateOperandAndOperation(String[] texts) {
         for (int i = 0; i < texts.length - 1; i += 2) {
-            operand[idx] = Integer.parseInt(texts[i]);
-            operation[idx++] = texts[i + 1];
+            operand.add(Double.parseDouble(texts[i]));
+            operation.add(texts[i + 1]);
         }
-        operand[idx] = Integer.parseInt(texts[texts.length - 1]);
+        operand.add(Double.parseDouble(texts[texts.length - 1]));
     }
 }

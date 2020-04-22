@@ -1,23 +1,18 @@
 package calculator;
 
-public class Split {
-    private static final String PLUS = "+";
-    private static final String MINUS = "-";
-    private static final String MULTIPLE = "*";
-    private static final String DIVIDE = "/";
-
+public class Splitter {
     private String text;
 
-    public Split(String text) {
+    public Splitter(String text) {
         this.text = text;
     }
 
     public String[] split() {
         String[] texts = text.split(" ");
+        checkLength(texts);
 
         int idx = 0;
         while (texts.length > idx) {
-            checkLength(texts);
             checkValue(texts, idx++);
         }
 
@@ -26,7 +21,7 @@ public class Split {
 
     private void checkLength(String[] texts) {
         if (!isOdd(texts.length)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("연산자와 피연산자의 수가 맞지않습니다.");
         }
     }
 
@@ -43,20 +38,17 @@ public class Split {
     }
 
     private void checkOperation(String[] texts, int idx) {
-        if (isOperation(texts[idx])) {
-            throw new IllegalArgumentException();
+        OperationTypeMapping om = new OperationTypeMapping();
+        if (om.isNotOperation(texts[idx])) {
+            throw new IllegalArgumentException("연산자가 아닌 다른값이 입력됐습니다.");
         }
-    }
-
-    private boolean isOperation(String operation) {
-        return !operation.equals(PLUS) && !operation.equals(MINUS) && !operation.equals(MULTIPLE) && !operation.equals(DIVIDE);
     }
 
     private void checkOperand(String[] texts, int idx) {
         try {
             Double.parseDouble(texts[idx]);
         } catch (NumberFormatException e) {
-            throw new NumberFormatException();
+            throw new NumberFormatException("피연산자가 아닌 다른값이 입력됐습니다.");
         }
     }
 }
