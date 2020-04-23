@@ -38,10 +38,8 @@ public class Splitter {
     }
 
     private void checkOperation(String[] texts, int idx) {
-        OperationTypeMapping om = new OperationTypeMapping();
-        if (om.isNotOperation(texts[idx])) {
-            throw new IllegalArgumentException("연산자가 아닌 다른값이 입력됐습니다.");
-        }
+        if (OperationType.hasNotContain(texts[idx]))
+            throw new NullPointerException("정의되지 않은 연산자가 입력됐습니다.");
     }
 
     private void checkOperand(String[] texts, int idx) {

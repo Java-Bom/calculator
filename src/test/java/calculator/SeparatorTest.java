@@ -10,13 +10,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SeparatorTest {
-    private Separator separator;
+    private SeparatedValue separatedValue;
     List<Double> expectedOperands;
     List<String> expectedOperations;
 
     @BeforeEach
     public void setUp() {
-        separator = new Separator("2 + 5 / 7 * 6");
+        separatedValue = new Separator("2 + 5 / 7 * 6").separateOperandAndOperation();
 
         expectedOperands = new ArrayList<>();
         expectedOperands.add(2.0);
@@ -33,14 +33,14 @@ public class SeparatorTest {
     @DisplayName("연산자와 피연산자를 분리시켰을 때 초기화가 잘 됐는지 수행한다.")
     @Test
     public void init() {
-        assertThat(separator.getOperand().size()).isEqualTo(expectedOperands.size());
-        assertThat(separator.getOperation().size()).isEqualTo(expectedOperations.size());
+        assertThat(separatedValue.getOperands().size()).isEqualTo(expectedOperands.size());
+        assertThat(separatedValue.getOperations().size()).isEqualTo(expectedOperations.size());
     }
 
     @DisplayName("연산자와 피연산자로 분리시켰을 때 각각의 값이 알맞게 들어갔는지 수행한다.")
     @Test
     public void separateNumberAndOperation() {
-        assertThat(separator.getOperand().get(1)).isEqualTo(expectedOperands.get(1));
-        assertThat(separator.getOperation().get(2)).isEqualTo(expectedOperations.get(2));
+        assertThat(separatedValue.getOperands().get(1)).isEqualTo(expectedOperands.get(1));
+        assertThat(separatedValue.getOperations().get(2)).isEqualTo(expectedOperations.get(2));
     }
 }

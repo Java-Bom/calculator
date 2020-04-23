@@ -1,25 +1,28 @@
 package calculator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum OperationType {
-    PLUS {
+    PLUS("+") {
         @Override
         double execute(double firstOperand, double secondOperand) {
             return firstOperand + secondOperand;
         }
     },
-    MINUS {
+    MINUS("-") {
         @Override
         double execute(double firstOperand, double secondOperand) {
             return firstOperand - secondOperand;
         }
     },
-    MULTIPLE {
+    MULTIPLE("*") {
         @Override
         double execute(double firstOperand, double secondOperand) {
             return firstOperand * secondOperand;
         }
     },
-    DIVIDE {
+    DIVIDE("/") {
         @Override
         double execute(double firstOperand, double secondOperand) {
             if (bottomIsZero(secondOperand)) {
@@ -28,6 +31,28 @@ public enum OperationType {
             return firstOperand / secondOperand;
         }
     };
+
+    private static final Map<String, OperationType> BY_OPERATION = new HashMap<>();
+
+    static {
+        for (OperationType type : values()) {
+            BY_OPERATION.put(type.operation, type);
+        }
+    }
+
+    public final String operation;
+
+    OperationType(String operation) {
+        this.operation = operation;
+    }
+
+    public static OperationType valueOfOperation(String operation) {
+        return BY_OPERATION.get(operation);
+    }
+
+    public static boolean hasNotContain(String operation) {
+        return !BY_OPERATION.containsKey(operation);
+    }
 
     boolean bottomIsZero(double secondOperand) {
         return secondOperand == 0;

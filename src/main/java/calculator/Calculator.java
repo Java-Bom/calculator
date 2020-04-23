@@ -4,21 +4,30 @@ import java.util.List;
 
 public class Calculator {
     private OperationType operationType;
+    private String value;
 
-    public double calculate(String text) {
-        if (text.isEmpty()) {
-            return 0;
-        }
-        Separator separator = new Separator(text);
-        return operate(separator.getOperand(), separator.getOperation());
+    public Calculator(String value) {
+        this.value = value;
     }
 
-    private double operate(List<Double> operands, List<String> operations) {
-        for (int i = 0; i < operations.size(); i++) {
-            operationType = OperationTypeMapping.getOperationType(operations.get(i));
+    public double calculate() {
+        if (value.isEmpty()) {
+            return 0;
+        }
+        return calculateValue();
+    }
+
+    private double calculateValue() {
+        SeparatedValue separatedValue = new Separator(value).separateOperandAndOperation();
+
+        List<Double> operands = separatedValue.getOperands();
+        List<String> operations = separatedValue.getOperations();
+        int length = operations.size();
+        for (int i = 0; i < length; i++) {
+            operationType = OperationType.valueOfOperation(operations.get(i));
             operands.set(i + 1, operationType.execute(operands.get(i), operands.get(i + 1)));
         }
 
-        return operands.get(operands.size() - 1);
+        return operands.get(length);
     }
 }

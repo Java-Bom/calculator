@@ -33,7 +33,7 @@ public class SplitterTest {
         Splitter splitter = new Splitter("3 + 4 / 5 & 7");
         assertThatThrownBy(() -> {
             splitter.split();
-        }).isInstanceOf(IllegalArgumentException.class).hasMessage("연산자가 아닌 다른값이 입력됐습니다.");
+        }).isInstanceOf(NullPointerException.class).hasMessage("정의되지 않은 연산자가 입력됐습니다.");
     }
 
     @DisplayName("입력 값중 피연산자가 들어가야 할 부분에 숫자가 아닌 값이 들어갔을 경우 예외발생시킨다.")
