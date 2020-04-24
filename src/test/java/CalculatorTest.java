@@ -1,30 +1,23 @@
 import input.InputProcessor;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 class CalculatorTest {
 
-    @DisplayName("실제 연산이 잘 수행되는지 확인!")
-    @Test
-    public void calculateTest() throws Exception {
-        // given
-        String input = "2 + 3 * 4 / 2";
-        String[] values = input.split(" ");
-        InputProcessor processor = new InputProcessor();
-        processor.splitOperatorsAndNumbers(values);
-        Calculator calculator = new Calculator();
-        List<String> operators = processor.operators;
-        List<Double> numbers = processor.numbers;
-
-        // when
-        double result = calculator.calculate(operators, numbers);
-
-        // then
-        assertThat(10.0).isEqualTo(result);
+    @DisplayName("입력값에 따른 계산")
+    @ParameterizedTest
+    @CsvSource(value = {"3+2/1,5.0", "2 + 3 * 4 / 2,10.0", " 1 + 2 ,3", "1 / 2, 0.5"})
+    public void calculateTest(String input, double result) {
+        InputProcessor inputProcessor = new InputProcessor(input);
+        List<String> operators = inputProcessor.getOperators();
+        List<Double> numbers = inputProcessor.getNumbers();
+        assertThat(new Calculator().calculate(numbers, operators)).isEqualTo(result);
     }
 
 }
