@@ -4,20 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Separator {
-    private String text;
-    private Splitter splitter;
-
-    public Separator(String text) {
-        this.text = text;
-        init();
-    }
-
-    private void init() {
-        splitter = new Splitter(text);
-    }
-
-    public SeparatedValue separateOperandAndOperation() {
-        String[] texts = splitter.split();
+    public static SeparatedValue separateOperandAndOperation(String text) {
+        String[] texts = Splitter.split(text);
 
         List<Double> operands = new ArrayList<>();
         List<String> operations = new ArrayList<>();

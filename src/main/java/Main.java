@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String value = sc.nextLine();
-        Calculator calculator = new Calculator(value);
-        System.out.println(calculator.calculate());
+        Calculator calculator = new Calculator();
+        System.out.println(calculator.calculate(value));
     }
 }

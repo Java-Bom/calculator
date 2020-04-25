@@ -16,7 +16,7 @@ public class SeparatorTest {
 
     @BeforeEach
     public void setUp() {
-        separatedValue = new Separator("2 + 5 / 7 * 6").separateOperandAndOperation();
+        separatedValue = new Separator().separateOperandAndOperation("2 + 5 / 7 * 6");
 
         expectedOperands = new ArrayList<>();
         expectedOperands.add(2.0);
