@@ -1,9 +1,11 @@
 package operation;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
-public enum     OperationType {
+public enum Operation {
     PLUS("+") {
         public double operate(double x , double y) { return x + y; }
     },
@@ -23,23 +25,19 @@ public enum     OperationType {
     };
 
     private String symbol;
-    private static final Map<String, OperationType> BY_SYMBOL = new HashMap<>();
+    private static final Map<String, Operation> BY_SYMBOL = new HashMap<>();
 
-    OperationType(String symbol) {
+    Operation(String symbol) {
         this.symbol = symbol;
     }
 
     static {
-        for (OperationType operationType : values()) {
-            BY_SYMBOL.put(operationType.symbol, operationType);
+        for (Operation operation : values()) {
+            BY_SYMBOL.put(operation.symbol, operation);
         }
     }
 
-    public static boolean isOperator(String symbol) {
-        return BY_SYMBOL.containsKey(symbol);
-    }
-
-    public static OperationType getType(String symbol) {
+    public static Operation getType(String symbol) {
         return BY_SYMBOL.get(symbol);
     }
 

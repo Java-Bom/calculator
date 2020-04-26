@@ -1,4 +1,7 @@
-import input.InputProcessor;
+import input.InputExpression;
+import input.Split;
+import operation.NumberPack;
+import operation.OperatorPack;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -14,10 +17,11 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3+2/1,5.0", "2 + 3 * 4 / 2,10.0", " 1 + 2 ,3", "1 / 2, 0.5"})
     public void calculateTest(String input, double result) {
-        InputProcessor inputProcessor = new InputProcessor(input);
-        List<String> operators = inputProcessor.getOperators();
-        List<Double> numbers = inputProcessor.getNumbers();
-        assertThat(new Calculator().calculate(numbers, operators)).isEqualTo(result);
+        Split split = new Split(input);
+        List<String> expression = split.getExpression();
+        NumberPack numberPack = new NumberPack(expression);
+        OperatorPack operatorPack = new OperatorPack(expression);
+        assertThat(new Calculator().calculate(numberPack, operatorPack)).isEqualTo(result);
     }
 
 }

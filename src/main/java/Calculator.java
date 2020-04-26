@@ -1,18 +1,16 @@
-import operation.OperationType;
-
-import java.util.Iterator;
-import java.util.List;
+import operation.NumberPack;
+import operation.Operation;
+import operation.OperatorPack;
 
 public class Calculator {
 
-    public double calculate(List<Double> numbers, List<String> operators) {
-        Iterator<Double> numbersIter = numbers.listIterator();
-        Iterator<String> operatorsIter = operators.listIterator();
-        double result = numbersIter.next();
-        while (operatorsIter.hasNext()) {
-            String operator = operatorsIter.next();
-            double y = numbersIter.next();
-            result = OperationType.getType(operator).operate(result, y);
+    public double calculate(NumberPack numberPack, OperatorPack operatorPack) {
+        double result = numberPack.pollNumber();
+        int operateCount = operatorPack.getOperatorPackCounts();
+        for (int i = 0; i < operateCount; i++) {
+            String operator = operatorPack.pollOperator();
+            double y = numberPack.pollNumber();
+            result = Operation.getType(operator).operate(result, y);
         }
         return result;
     }
